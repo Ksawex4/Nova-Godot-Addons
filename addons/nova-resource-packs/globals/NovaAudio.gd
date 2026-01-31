@@ -40,11 +40,11 @@ func _get_as_audio_stream(path: String) -> AudioStream:
 			return stream
 		
 		"wav":
-			var stream: AudioStreamWAV = AudioStreamWAV.load_from_file(path)
+			var stream: AudioStreamWAV = AudioStreamWAV.new().load_from_file(path)
 			return stream
 		
 		_:
-			print(extension)
+			print(extension, " Fail")
 	
 	return AudioStream.new()
 

@@ -10,19 +10,19 @@ const RESOURCE_PACK_DATA_PATH = RESOURCE_PACKS_PATH + "/%s/data.json"
 func _ready() -> void:
 	load_base_assets()
 	load_resource_pack_ids()
-	#for x in range(9999):
-		#TranslationServer.set_locale(NovaTranslation.DEFAULT_LOCALE)
-		#print("Test")
-		#activate_resource_pack("test-pack")
-		#load_active_resource_packs()
-		#print(tr("text.holy-duck"))
-		#await get_tree().create_timer(1.5).timeout
-		##TranslationServer.set_locale("pl")
-		#print("No test")
-		#disable_resource_pack("test-pack")
-		#load_active_resource_packs()
-		#print(tr("text.holy-duck"))
-		#await get_tree().create_timer(1.5).timeout
+	for x in range(9999):
+		TranslationServer.set_locale(NovaTranslation.DEFAULT_LOCALE)
+		print("Test")
+		activate_resource_pack("test-pack")
+		load_active_resource_packs()
+		print(tr("text.holy-duck"))
+		await get_tree().create_timer(1.5).timeout
+		#TranslationServer.set_locale("pl")
+		print("No test")
+		disable_resource_pack("test-pack")
+		load_active_resource_packs()
+		print(tr("text.holy-duck"))
+		await get_tree().create_timer(1.5).timeout
 
 
 func load_base_assets() -> void:

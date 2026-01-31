@@ -10,17 +10,21 @@ func _ready() -> void:
 	match AudioType:
 		AudioTypes.SFX:
 			NovaAudio.ReloadSfx.connect(_reload_stream)
+			stream = NovaAudio.get_sfx(AudioId)
 		AudioTypes.MUSIC:
 			NovaAudio.ReloadMusic.connect(_reload_stream)
+			stream = NovaAudio.get_music(AudioId)
 	if Loop:
 		finished.connect(play)
+	
+	if autoplay:
+		play()
 	
 	await _nova_ready()
 
 
 func _nova_ready() -> void:
-	await get_tree().create_timer(0.3).timeout
-	play()
+	pass
 
 
 func toggle_loop() -> void:

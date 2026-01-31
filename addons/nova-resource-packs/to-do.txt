@@ -1,0 +1,66 @@
+NovaResourcePack:
+	data.json structure {DONE}
+	ResourcePacks: PackedStringArray {DONE}
+	ActiveResourcePacks: PackedStringArray {DONE}
+	BASE_PACK_ID {DONE}
+	BASE_PACK_DATA_PATH {DONE}
+	RESOURCE_PACKS_PATH {DONE}
+	RESOURCE_PACK_DATA_PATH {DONE}
+	load_base_assets(data: Dictionary = {}) {DONE}
+	load_resource_pack_ids() {DONE}
+	get_pack_data(id: String) -> Dictionary {DONE}
+	activate_resource_pack(id: String) {DONE}
+	disable_resource_pack(id: String) {DONE}
+	return_save_data() -> Dictionary {DONE}
+	load_save_data(data: Dictionary) {DONE}
+	load_active_resource_packs() {SOON DONE, NEEDS NovaAudio and NovaAnimation to be done first}
+NovaTranslation: {DONE}
+	NovaLabel Node {NOT-NEEDED}
+	NovaRichTextLabel Node {NOT-NEEDED}
+	load_base_translations(data: Dictionary = {}) {DONE}
+	load_locales(translations: Dictionary, langs_path: String) {DONE}
+	load_translation_pack(id: String, data: Dictionary = {}) {DONE}
+NovaTexture: {DONE}
+	NovaSprite2D Node {DONE}
+	NovaTextureRect Node {DONE}
+	Textures: Dictionary[StringName, Texture2D] {DONE}
+	TextureSizes: Dictionary[StringName, Vector2] {DONE}
+	signal ReloadTexture() {DONE}
+	add_texture(id: StringName, texture: Texture2D) {DONE}
+	get_texture(id: StringName) -> Texture2D {DONE}
+	get_scale(id: StringName, old_size: Vector2, scale: Vector2) -> Vector2 {DONE}
+	get_texture_size(id: StringName) -> Vector2 {DONE}
+	get_texture_from_file(texture_path: String) -> Texture2D {DONE}
+	load_base_textures(data: Dictionary = {}) {DONE}
+	load_textures(textures: Dictionary) {DONE}
+	load_texture_pack(id: String, data: Dictionary = {}) {DONE}
+NovaAudio:
+	NovaAudioStreamPlayer Node {DONE}
+	NovaAudioStreamPlayer2D Node {DONE}
+	MusicStreamPlayer: AudioStreamPlayer {DONE}
+	CurrentMusicId: StringName {DONE}
+	Music: Dictionary[StringName, String] {DONE}
+	Sfx: Dictionary[StringName, AudioStream] {DONE}
+	signal ReloadSfx() {DONE}
+	signal ReloadMusic() {DONE}
+	add_music(id: StringName, path: String) {DONE}
+	add_sfx(id: StringName, path: String) {DONE}
+	get_music(id: StringName) -> AudioStream {DONE}
+	get_sfx(id: StringName) -> AudioStream {DONE}
+	get_music_path(id: StringName) -> String {DONE}
+	play_music(id: StringName) {DONE}
+	load_base_audio(data: Dictionary = {}) {DONE}
+	load_audio_pack(id: String, data: Dictionary = {}) {DONE}
+	load_sfx(sfxs: Dictionary, audio_path: String) {DONE}
+	load_music(musics: Dictionary, audio_path: String) {DONE}
+NovaAnimation:
+	NovaAnimatedSprite2D Node
+	Animations: Dictionary[StringName, SpriteFrames]
+	add_animation(id: StringName, animation_data: Dictionary)
+	_add_animation_sheet(id: StringName, animation_data: Dictionary)
+	_add_animation_frames(id: StringName, animation_data: Dictionary)
+	get_animation(id: StringName, duplicate: bool = false) -> SpriteFrames
+	get_scale(id: StringName, old_size: Vector2, scale: Vector2) -> Vector2 # uses NovaTexture.get_scale()
+	get_animation_texture_size(id: StringName) -> Vector2 # uses NovaTexture.get_texture_size()
+	load_base_animations()
+	load_animation_pack(id: String, data: Dictionary = {})

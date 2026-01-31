@@ -102,7 +102,5 @@ metadata/_custom_type_script = "uid://10mtty5u20kl"
 [node name="NovaAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1866310338]
 autoplay = true
 script = ExtResource("6_vbegm")
-AudioType = 1
 AudioId = &"example-sfx"
-Loop = true
 metadata/_custom_type_script = "uid://beu7ws15ho70p"
