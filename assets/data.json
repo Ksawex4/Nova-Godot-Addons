@@ -1,0 +1,63 @@
+{
+  "assets-path": "res://assets/",
+  "sfx-path": "audio/sfx/",
+  "music-path": "audio/music/",
+  "textures-path": "textures/",
+  "langs-path": "langs/",
+  "meta": {
+	 "name": "NovaPack",
+	 "description": "4K textures for block jumper, 1000% REAL",
+	 "authors": [
+		  "NovaProot",
+        "qStarRat"
+	 ]
+  },
+
+  "audio": {
+	 "sfx": {
+		"example-sfx": "sfx-kabumm.wav"
+	 },
+	 "music": {
+		"example-music": "mus-main-menu.ogg"
+	 }
+  },
+
+  "textures": {
+	 "duck": "Quack.jpg",
+	 "fency-sheet": "characters/players/fency.png",
+	 "pan-loduwka.idle.1": "characters/players/pan-loduwka/pan-loduwka1.png",
+	 "pan-loduwka.idle.2": "characters/players/pan-loduwka/pan-loduwka2.png",
+	 "pan-loduwka.idle.3": "characters/players/pan-loduwka/pan-loduwka3.png",
+	 "pan-loduwka.idle.4": "characters/players/pan-loduwka/pan-loduwka4.png"
+  },
+  "animations": {
+	 "fency": {
+		"type": "sheet",
+		"texture-id": "fency-sheet",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "pan-loduwka.idle": {
+		"type": "frames",
+		"texture-id": [
+		  "pan-loduwka.idle.1",
+		  "pan-loduwka.idle.2",
+		  "pan-loduwka.idle.3",
+        "pan-loduwka.idle.4"
+		],
+		"fps": 5.0,
+		"loop": true
+	 }
+  },
+
+  "langs": {
+	 "en_us": "en_us.json",
+	 "pl": {
+		"duck": "Kaczka",
+		"menu.settings.is-duck": "Czy jesteś kaczką?",
+		"text.holy-duck": "święta kaczka"
+	 }
+  }
+}
