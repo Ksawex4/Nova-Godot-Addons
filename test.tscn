@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="5_g14j6"]
 [ext_resource type="Script" uid="uid://beu7ws15ho70p" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer2D.gd" id="6_vbegm"]
 [ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="7_vbegm"]
+[ext_resource type="Script" uid="uid://c25v0gbj2s157" path="res://label_2.gd" id="8_ehkex"]
+[ext_resource type="FontFile" uid="uid://qvd0rfchehoe" path="res://assets/fonts/main.ttf" id="8_xersf"]
 
 [node name="Node2D" type="Node2D" unique_id=666640179]
 
@@ -149,3 +151,19 @@ AnimationName = &"right"
 Autoplay = true
 BaseTextureSizeId = &"pan-loduwka.idle.1"
 metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
+
+[node name="Label2" type="Label" parent="." unique_id=1453944711]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "adfjankdashdiocvio058913278913bvkcjkst2y652789vu89789237592h"
+script = ExtResource("8_ehkex")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1452746874]
+offset_right = 435.0
+offset_bottom = 60.0
+theme_override_fonts/normal_font = ExtResource("8_xersf")
+text = "
+
+
+jdasldlask"
+fit_content = true

@@ -65,9 +65,10 @@ NovaAnimation: {DONE}
 	load_base_animations(data: Dictionary = {}) {DONE}
 	load_animation_pack(id: String, data: Dictionary = {}) {DONE}
 NovaFont:
-	#FontFile.new().load_dynamic_font()
 	Fonts: Dictionary[StringName, FontFile] {DONE}
 	add_font(id: StringName, path: String) {DONE}
 	get_font(id: String) -> FontFile {DONE}
 	load_base_fonts(data: Dictionary = {})
 	load_font_pack(id: String, data: Dictionary = {})
+	
+	All 2d/control nodes that can use fonts will be done at a later time

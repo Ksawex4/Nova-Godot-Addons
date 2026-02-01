@@ -10,15 +10,6 @@ const RESOURCE_PACK_DATA_PATH = RESOURCE_PACKS_PATH + "/%s/data.json"
 func _ready() -> void:
 	load_base_assets()
 	load_resource_pack_ids()
-	await get_tree().physics_frame
-	for x in range(9999):
-		TranslationServer.set_locale(NovaTranslation.DEFAULT_LOCALE)
-		activate_resource_pack("emix-pack")
-		load_active_resource_packs()
-		await get_tree().create_timer(1.5).timeout
-		disable_resource_pack("emix-pack")
-		load_active_resource_packs()
-		await get_tree().create_timer(1.5).timeout
 
 
 func load_base_assets() -> void:
@@ -28,6 +19,7 @@ func load_base_assets() -> void:
 	NovaTexture.load_base_textures(base_data)
 	NovaAnimation.load_base_animations(base_data)
 	NovaAudio.load_base_audio(base_data)
+	NovaFont.load_base_fonts(base_data)
 	print("============ Loaded %s ==============" % BASE_PACK_ID)
 
 
@@ -96,6 +88,7 @@ func return_save_data() -> Dictionary:
 
 func load_save_data(data: Dictionary) -> void:
 	ActiveResourcePacks = data.get("ActiveResourcePacks", [BASE_PACK_ID])
+	load_active_resource_packs()
 
 
 func load_active_resource_packs() -> void:
@@ -112,9 +105,11 @@ func load_active_resource_packs() -> void:
 		NovaTexture.load_texture_pack(id, pack_data)
 		NovaAnimation.load_animation_pack(id, pack_data)
 		NovaAudio.load_audio_pack(id, pack_data)
+		NovaFont.load_font_pack(id, pack_data)
 		print("============ Loaded pack %s ==============" % id)
 	
 	NovaTexture.ReloadTexture.emit()
 	NovaAnimation.ReloadAnimation.emit()
 	NovaAudio.ReloadSfx.emit()
 	NovaAudio.ReloadMusic.emit()
+	NovaFont.ReloadFont.emit()

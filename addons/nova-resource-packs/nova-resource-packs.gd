@@ -8,6 +8,7 @@ func _enable_plugin() -> void:
 	add_autoload_singleton("NovaAnimation", plugin_path + "/globals/NovaAnimation.gd")
 	add_autoload_singleton("NovaTranslation", plugin_path + "/globals/NovaTranslation.gd")
 	add_autoload_singleton("NovaAudio", plugin_path + "/globals/NovaAudio.gd")
+	add_autoload_singleton("NovaFont", plugin_path + "/globals/NovaFont.gd")
 	add_autoload_singleton("NovaResourcePack", plugin_path + "/globals/NovaResourcePack.gd")
 
 
@@ -17,6 +18,7 @@ func _disable_plugin() -> void:
 	remove_autoload_singleton("NovaTranslation")
 	remove_autoload_singleton("NovaAudio")
 	remove_autoload_singleton("NovaResourcePack")
+	remove_autoload_singleton("NovaFont")
 
 
 func _enter_tree() -> void:

@@ -10,9 +10,10 @@ signal ReloadMusic()
 
 
 func add_music(id: StringName, path: String):
-	print(!FileAccess.file_exists(path) and path.begins_with("user://"))
-	print(!ResourceLoader.exists(path) and path.begins_with("res://"))
-	if (!FileAccess.file_exists(path) and path.begins_with("user://")) and (!ResourceLoader.exists(path) and path.begins_with("res://")):
+	var exists: bool = (
+		(FileAccess.file_exists(path) and path.begins_with("user://"))
+		or (ResourceLoader.exists(path)) and path.begins_with("res://"))
+	if !exists:
 		push_warning("File doesn't exist path: %s id: %s" % [path, id])
 		return
 	
@@ -20,9 +21,10 @@ func add_music(id: StringName, path: String):
 
 
 func add_sfx(id: StringName, path: String):
-	print(FileAccess.file_exists(path))
-	print(ResourceLoader.exists(path))
-	if (!FileAccess.file_exists(path) and path.begins_with("user://")) and (!ResourceLoader.exists(path) and path.begins_with("res://")):
+	var exists: bool = (
+		(FileAccess.file_exists(path) and path.begins_with("user://"))
+		or (ResourceLoader.exists(path)) and path.begins_with("res://"))
+	if !exists:
 		push_warning("File doesn't exist path: %s id: %s" % [path, id])
 		Sfx.set(id, AudioStream.new())
 		return
@@ -37,16 +39,14 @@ func add_sfx(id: StringName, path: String):
 
 func _get_as_audio_stream(path: String) -> AudioStream:
 	var extension: String = path.get_file().get_extension()
+	if path.begins_with("res://"):
+		return load(path)
 	match extension:
 		"ogg":
-			if path.begins_with("res://"):
-				return load(path)
 			var stream: AudioStreamOggVorbis = AudioStreamOggVorbis.load_from_file(path)
 			return stream
 		
 		"wav":
-			if path.begins_with("res://"):
-				return load(path)
 			var stream: AudioStreamWAV = AudioStreamWAV.new().load_from_file(path)
 			return stream
 		

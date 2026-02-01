@@ -25,6 +25,7 @@ NovaTexture="*uid://c3s5ls8isn1pk"
 NovaAnimation="*uid://d2lgtf02oixnb"
 NovaTranslation="*uid://rqdjajdrxdjj"
 NovaAudio="*uid://hg2loqpj0ydg"
+NovaFont="*uid://c15tc7x6hpso0"
 NovaResourcePack="*uid://b0pi17fo4ohhu"
 
 [editor_plugins]
