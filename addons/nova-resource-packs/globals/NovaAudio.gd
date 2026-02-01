@@ -50,6 +50,10 @@ func _get_as_audio_stream(path: String) -> AudioStream:
 			var stream: AudioStreamWAV = AudioStreamWAV.new().load_from_file(path)
 			return stream
 		
+		"mp3":
+			var stream: AudioStreamMP3 = AudioStreamMP3.new().load_from_file(path)
+			return stream
+		
 		_:
 			push_warning(extension, " - unsupported extension, should be .wav or .ogg")
 	
