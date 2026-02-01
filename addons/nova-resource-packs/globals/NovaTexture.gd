@@ -44,17 +44,23 @@ func get_texture_size(id: StringName) -> Vector2:
 
 
 func get_texture_from_file(texture_path: String) -> Texture2D:
-	if texture_path.begins_with("res://"):
+	var exists: bool = (
+		(FileAccess.file_exists(texture_path) and texture_path.begins_with("user://"))
+		or (ResourceLoader.exists(texture_path)) and texture_path.begins_with("res://"))
+	if !exists:
+		push_warning("File doesnt exist at path: %s" % texture_path)
+	if texture_path.begins_with("res://") and exists:
 		return load(texture_path)
-	elif texture_path.begins_with("user://"):
+	elif texture_path.begins_with("user://") and exists:
 		var image: Image = Image.new()
 		var err = image.load(texture_path)
-		print("%s err: %s" % [texture_path, err])
 		
 		if image != null and err == OK:
 			var texture: ImageTexture = ImageTexture.create_from_image(image)
 			if texture != null:
 				return texture
+		else:
+			print("%s err: %s" % [texture_path, err])
 	
 	print("Failed to load, loading as 'missing' texture_path: %s" % texture_path)
 	return Textures[&"missing"]
@@ -77,6 +83,7 @@ func load_base_textures(data: Dictionary = {}) -> void:
 	var textures_path: String = assets_path + data.get("textures-path", "")
 	var textures: Dictionary = data.get("textures", {})
 	
+	print("Loading texture pack: %s" % NovaResourcePack.BASE_PACK_ID)
 	load_textures(textures, textures_path)
 
 
@@ -94,7 +101,7 @@ func load_texture_pack(id: String, data: Dictionary) -> void:
 	if data.is_empty():
 		push_warning("Pack %s data.json is empty")
 		return
-	
+	print("Loading texture pack: %s" % id)
 	var base_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % id
 	var textures_path: String = base_path + data.get("assets-path", "") + data.get("textures-path", "")
 	var textures: Dictionary = data.get("textures", {})

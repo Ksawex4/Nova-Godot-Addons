@@ -16,6 +16,7 @@ func load_base_translations(data: Dictionary = {}) -> void:
 	var langs_path: String = assets_path + data.get("langs-path", "")
 	
 	var translations: Dictionary = data.get("langs", {})
+	print("Loading translation pack: %s" % NovaResourcePack.BASE_PACK_ID)
 	load_locales(translations, langs_path)
 
 
@@ -23,7 +24,6 @@ func load_locales(translations: Dictionary, langs_path: String) -> void:
 	for locale: String in translations:
 		var translation = translations[locale]
 		if typeof(translation) == TYPE_STRING:
-			print("locale: %s translation: %s, path: %s" % [locale, translation, langs_path + translation])
 			translation = _get_translation_from_file(langs_path + translation)
 		elif typeof(translation) != TYPE_DICTIONARY:
 			push_warning("Unsuported type for locale %s, should be String(path) or Dictionary" % locale)
@@ -78,6 +78,7 @@ func load_translation_pack(id: String, data: Dictionary = {}) -> void:
 		push_warning("Pack %s data.json is empty")
 		return
 	
+	print("Loading translation pack: %s" % id)
 	var base_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % id
 	var langs_path: String = base_path + data.get("assets-path", "") + data.get("langs-path", "")
 	var translations: Dictionary = data.get("langs")

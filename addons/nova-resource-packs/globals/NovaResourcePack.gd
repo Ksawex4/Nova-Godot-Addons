@@ -10,27 +10,25 @@ const RESOURCE_PACK_DATA_PATH = RESOURCE_PACKS_PATH + "/%s/data.json"
 func _ready() -> void:
 	load_base_assets()
 	load_resource_pack_ids()
+	await get_tree().physics_frame
 	for x in range(9999):
 		TranslationServer.set_locale(NovaTranslation.DEFAULT_LOCALE)
-		print("Test")
-		activate_resource_pack("test-pack")
+		activate_resource_pack("emix-pack")
 		load_active_resource_packs()
-		print(tr("text.holy-duck"))
 		await get_tree().create_timer(1.5).timeout
-		#TranslationServer.set_locale("pl")
-		print("No test")
-		disable_resource_pack("test-pack")
+		disable_resource_pack("emix-pack")
 		load_active_resource_packs()
-		print(tr("text.holy-duck"))
 		await get_tree().create_timer(1.5).timeout
 
 
 func load_base_assets() -> void:
+	print("Loading pack: %s" % BASE_PACK_ID)
 	var base_data: Dictionary = get_pack_data()
 	NovaTranslation.load_base_translations(base_data)
 	NovaTexture.load_base_textures(base_data)
-	#NovaAnimation.load_base_animations(base_data)
+	NovaAnimation.load_base_animations(base_data)
 	NovaAudio.load_base_audio(base_data)
+	print("============ Loaded %s ==============" % BASE_PACK_ID)
 
 
 func load_resource_pack_ids() -> void:
@@ -60,7 +58,6 @@ func get_pack_data(id: String = BASE_PACK_ID) -> Dictionary:
 	var pack_data_path: String = RESOURCE_PACK_DATA_PATH % id
 	if id == BASE_PACK_ID:
 		pack_data_path = BASE_PACK_DATA_PATH
-	
 	if !FileAccess.file_exists(pack_data_path):
 		push_warning("data.json doesn't exist for id: %s path: %s " % [id, pack_data_path])
 		return {}
@@ -84,7 +81,6 @@ func activate_resource_pack(id: String) -> void:
 
 
 func disable_resource_pack(id: String) -> void:
-	print(ActiveResourcePacks.has(id) and id != BASE_PACK_ID)
 	if ActiveResourcePacks.has(id) and id != BASE_PACK_ID:
 		ActiveResourcePacks.erase(id)
 	
@@ -103,20 +99,22 @@ func load_save_data(data: Dictionary) -> void:
 
 
 func load_active_resource_packs() -> void:
+	print("Loading packs: ",ActiveResourcePacks)
 	load_base_assets()
 	
-	print(ActiveResourcePacks)
 	for id in ActiveResourcePacks:
 		if id == BASE_PACK_ID:
 			continue
+		print("Loading pack: %s" % id)
 		var pack_data: Dictionary = get_pack_data(id)
 		
 		NovaTranslation.load_translation_pack(id, pack_data)
 		NovaTexture.load_texture_pack(id, pack_data)
-		#NovaAnimation.load_animation_pack(id, pack_data)
+		NovaAnimation.load_animation_pack(id, pack_data)
 		NovaAudio.load_audio_pack(id, pack_data)
+		print("============ Loaded pack %s ==============" % id)
 	
 	NovaTexture.ReloadTexture.emit()
-	#NovaAnimation.ReloadAnimation.emit()
+	NovaAnimation.ReloadAnimation.emit()
 	NovaAudio.ReloadSfx.emit()
 	NovaAudio.ReloadMusic.emit()

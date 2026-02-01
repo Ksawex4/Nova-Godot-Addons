@@ -10,7 +10,9 @@ signal ReloadMusic()
 
 
 func add_music(id: StringName, path: String):
-	if !FileAccess.file_exists(path):
+	print(!FileAccess.file_exists(path) and path.begins_with("user://"))
+	print(!ResourceLoader.exists(path) and path.begins_with("res://"))
+	if (!FileAccess.file_exists(path) and path.begins_with("user://")) and (!ResourceLoader.exists(path) and path.begins_with("res://")):
 		push_warning("File doesn't exist path: %s id: %s" % [path, id])
 		return
 	
@@ -18,7 +20,9 @@ func add_music(id: StringName, path: String):
 
 
 func add_sfx(id: StringName, path: String):
-	if !FileAccess.file_exists(path):
+	print(FileAccess.file_exists(path))
+	print(ResourceLoader.exists(path))
+	if (!FileAccess.file_exists(path) and path.begins_with("user://")) and (!ResourceLoader.exists(path) and path.begins_with("res://")):
 		push_warning("File doesn't exist path: %s id: %s" % [path, id])
 		Sfx.set(id, AudioStream.new())
 		return
@@ -33,18 +37,21 @@ func add_sfx(id: StringName, path: String):
 
 func _get_as_audio_stream(path: String) -> AudioStream:
 	var extension: String = path.get_file().get_extension()
-	print(extension)
 	match extension:
 		"ogg":
+			if path.begins_with("res://"):
+				return load(path)
 			var stream: AudioStreamOggVorbis = AudioStreamOggVorbis.load_from_file(path)
 			return stream
 		
 		"wav":
+			if path.begins_with("res://"):
+				return load(path)
 			var stream: AudioStreamWAV = AudioStreamWAV.new().load_from_file(path)
 			return stream
 		
 		_:
-			print(extension, " Fail")
+			push_warning(extension, " - unsupported extension, should be .wav or .ogg")
 	
 	return AudioStream.new()
 
@@ -107,8 +114,10 @@ func load_base_audio(data: Dictionary = {}) -> void:
 	var audio: Dictionary = data.get("audio")
 	var sfxs: Dictionary = audio.get("sfx")
 	var musics: Dictionary = audio.get("music")
-	
+	print("Loading audio pack: %s" % NovaResourcePack.BASE_PACK_ID)
+	print("Loading sfx: %s" % NovaResourcePack.BASE_PACK_ID)
 	load_sfx(sfxs, sfx_path)
+	print("Loading music: %s" % NovaResourcePack.BASE_PACK_ID)
 	load_music(musics, music_path)
 
 
@@ -140,5 +149,8 @@ func load_audio_pack(id: String, data: Dictionary = {}) -> void:
 	var sfxs: Dictionary = audio.get("sfx")
 	var musics: Dictionary = audio.get("music")
 	
+	print("Loading audio pack: %s" % id)
+	print("Loading sfx: %s" % id)
 	load_sfx(sfxs, sfx_path)
+	print("Loading music: %s" % id)
 	load_music(musics, music_path)

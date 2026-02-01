@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cstcguipq364k" path="res://addons/nova-resource-packs/nodes/texture/NovaTextureRect.gd" id="4_ykrsh"]
 [ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="5_g14j6"]
 [ext_resource type="Script" uid="uid://beu7ws15ho70p" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer2D.gd" id="6_vbegm"]
+[ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="7_vbegm"]
 
 [node name="Node2D" type="Node2D" unique_id=666640179]
 
@@ -103,4 +104,48 @@ metadata/_custom_type_script = "uid://10mtty5u20kl"
 autoplay = true
 script = ExtResource("6_vbegm")
 AudioId = &"example-sfx"
+Loop = true
 metadata/_custom_type_script = "uid://beu7ws15ho70p"
+
+[node name="NovaAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=952358450]
+texture_filter = 1
+position = Vector2(112, 72)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_vbegm")
+AnimationId = &"fency"
+Autoplay = true
+BaseTextureSizeId = &"fency"
+IsBaseTextureSheet = true
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
+
+[node name="NovaAnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1010865576]
+texture_filter = 1
+position = Vector2(168, 72)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_vbegm")
+AnimationId = &"pan-loduwka"
+Autoplay = true
+BaseTextureSizeId = &"pan-loduwka.idle.1"
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
+
+[node name="NovaAnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=465135516]
+texture_filter = 1
+position = Vector2(232, 72)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_vbegm")
+AnimationId = &"pan-loduwka"
+AnimationName = &"left"
+Autoplay = true
+BaseTextureSizeId = &"pan-loduwka.idle.1"
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
+
+[node name="NovaAnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=1996723553]
+texture_filter = 1
+position = Vector2(296, 72)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_vbegm")
+AnimationId = &"pan-loduwka"
+AnimationName = &"right"
+Autoplay = true
+BaseTextureSizeId = &"pan-loduwka.idle.1"
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"

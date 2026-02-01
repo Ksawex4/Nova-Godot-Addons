@@ -4,12 +4,13 @@
   "music-path": "audio/music/",
   "textures-path": "textures/",
   "langs-path": "langs/",
+  "fonts-path": "fonts/",
   "meta": {
 	 "name": "NovaPack",
 	 "description": "4K textures for block jumper, 1000% REAL",
 	 "authors": [
-		  "NovaProot",
-        "qStarRat"
+		"NovaProot",
+      "qStarRat"
 	 ]
   },
 
@@ -24,28 +25,52 @@
 
   "textures": {
 	 "duck": "Quack.jpg",
-	 "fency-sheet": "characters/players/fency.png",
+	 "fency": "characters/players/fency.png",
 	 "pan-loduwka.idle.1": "characters/players/pan-loduwka/pan-loduwka1.png",
 	 "pan-loduwka.idle.2": "characters/players/pan-loduwka/pan-loduwka2.png",
 	 "pan-loduwka.idle.3": "characters/players/pan-loduwka/pan-loduwka3.png",
-	 "pan-loduwka.idle.4": "characters/players/pan-loduwka/pan-loduwka4.png"
+	 "pan-loduwka.idle.4": "characters/players/pan-loduwka/pan-loduwka4.png",
+	 "pan-loduwka.left": "characters/players/pan-loduwka-left.png",
+	 "pan-loduwka.right.1": "characters/players/pan-loduwka-right1.png",
+	 "pan-loduwka.right.2": "characters/players/pan-loduwka-right2.png",
+	 "pan-loduwka.right.3": "characters/players/pan-loduwka-right3.png",
+	 "pan-loduwka.right.4": "characters/players/pan-loduwka-right4.png"
   },
   "animations": {
 	 "fency": {
 		"type": "sheet",
-		"texture-id": "fency-sheet",
+		"texture-id": "fency",
 		"frames-x": 2,
 		"frames-y": 2,
 		"fps": 5.0,
 		"loop": true
 	 },
-	 "pan-loduwka.idle": {
+	 "pan-loduwka": {
 		"type": "frames",
 		"texture-id": [
-		  "pan-loduwka.idle.1",
-		  "pan-loduwka.idle.2",
-		  "pan-loduwka.idle.3",
-        "pan-loduwka.idle.4"
+	"pan-loduwka.idle.1",
+	"pan-loduwka.idle.2",
+	"pan-loduwka.idle.3",
+	"pan-loduwka.idle.4"
+		],
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "pan-loduwka.left": {
+		"type": "sheet",
+		"texture-id": "pan-loduwka.left",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "pan-loduwka.right": {
+		"type": "frames",
+		"texture-id": [
+		  "pan-loduwka.right.1",
+		  "pan-loduwka.right.2",
+		  "pan-loduwka.right.3",
+		  "pan-loduwka.right.4"
 		],
 		"fps": 5.0,
 		"loop": true
@@ -59,5 +84,8 @@
 		"menu.settings.is-duck": "Czy jesteś kaczką?",
 		"text.holy-duck": "święta kaczka"
 	 }
+  },
+  "fonts": {
+	 "main": "main.ttf"
   }
 }

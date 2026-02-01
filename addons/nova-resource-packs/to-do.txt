@@ -13,7 +13,7 @@ NovaResourcePack:
 	disable_resource_pack(id: String) {DONE}
 	return_save_data() -> Dictionary {DONE}
 	load_save_data(data: Dictionary) {DONE}
-	load_active_resource_packs() {SOON DONE, NEEDS NovaAudio and NovaAnimation to be done first}
+	load_active_resource_packs() {ALMOST DONE, NEEDS NovaFont}
 NovaTranslation: {DONE}
 	NovaLabel Node {NOT-NEEDED}
 	NovaRichTextLabel Node {NOT-NEEDED}
@@ -34,7 +34,7 @@ NovaTexture: {DONE}
 	load_base_textures(data: Dictionary = {}) {DONE}
 	load_textures(textures: Dictionary) {DONE}
 	load_texture_pack(id: String, data: Dictionary = {}) {DONE}
-NovaAudio:
+NovaAudio: {DONE}
 	NovaAudioStreamPlayer Node {DONE}
 	NovaAudioStreamPlayer2D Node {DONE}
 	MusicStreamPlayer: AudioStreamPlayer {DONE}
@@ -53,14 +53,21 @@ NovaAudio:
 	load_audio_pack(id: String, data: Dictionary = {}) {DONE}
 	load_sfx(sfxs: Dictionary, audio_path: String) {DONE}
 	load_music(musics: Dictionary, audio_path: String) {DONE}
-NovaAnimation:
-	NovaAnimatedSprite2D Node
-	Animations: Dictionary[StringName, SpriteFrames]
-	add_animation(id: StringName, animation_data: Dictionary)
-	_add_animation_sheet(id: StringName, animation_data: Dictionary)
-	_add_animation_frames(id: StringName, animation_data: Dictionary)
-	get_animation(id: StringName, duplicate: bool = false) -> SpriteFrames
-	get_scale(id: StringName, old_size: Vector2, scale: Vector2) -> Vector2 # uses NovaTexture.get_scale()
-	get_animation_texture_size(id: StringName) -> Vector2 # uses NovaTexture.get_texture_size()
-	load_base_animations()
-	load_animation_pack(id: String, data: Dictionary = {})
+NovaAnimation: {DONE}
+	NovaAnimatedSprite2D Node {ALMOST DONE, get_scale needs to work correctly first}
+	Animations: Dictionary[StringName, SpriteFrames] {DONE}
+	signal ReloadAnimation() {DONE}
+	add_animation(id: StringName, animation_data: Dictionary) {DONE}
+	_add_animation_sheet(id: StringName, animation_data: Dictionary) {DONE}
+	_add_animation_frames(id: StringName, animation_data: Dictionary) {DONE}
+	get_animation(id: StringName, duplicate: bool = false) -> SpriteFrames {DONE}
+	get_animation_texture_size(id: StringName) -> Vector2 # uses NovaTexture.get_texture_size() {DONE}
+	load_base_animations(data: Dictionary = {}) {DONE}
+	load_animation_pack(id: String, data: Dictionary = {}) {DONE}
+NovaFont:
+	#FontFile.new().load_dynamic_font()
+	Fonts: Dictionary[StringName, FontFile] {DONE}
+	add_font(id: StringName, path: String) {DONE}
+	get_font(id: String) -> FontFile {DONE}
+	load_base_fonts(data: Dictionary = {})
+	load_font_pack(id: String, data: Dictionary = {})

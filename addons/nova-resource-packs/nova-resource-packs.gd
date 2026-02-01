@@ -40,11 +40,17 @@ func _enter_tree() -> void:
 		load(plugin_path + "/nodes/audio/NovaAudioStreamPlayer.gd"),
 		load(plugin_path + "/missing.png")
 	)
-	
 	add_custom_type(
 		"NovaAudioStreamPlayer2D",
 		"AudioStreamPlayer2D",
 		load(plugin_path + "/nodes/audio/NovaAudioStreamPlayer2D.gd"),
+		load(plugin_path + "/missing.png")
+	)
+	
+	add_custom_type(
+		"NovaAnimatedSprite2D",
+		"AnimatedSprite2D",
+		load(plugin_path + "/nodes/animations/NovaAnimatedSprite2D.gd"),
 		load(plugin_path + "/missing.png")
 	)
 
@@ -54,3 +60,4 @@ func _exit_tree() -> void:
 	remove_custom_type("NovaTextureRect")
 	remove_custom_type("NovaAudioStreamPlayer")
 	remove_custom_type("NovaAudioStreamPlayer2D")
+	remove_custom_type("NovaAnimatedSprite2D")
