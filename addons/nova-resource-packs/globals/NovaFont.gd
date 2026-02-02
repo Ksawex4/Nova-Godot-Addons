@@ -70,6 +70,7 @@ func get_font(id: StringName) -> FontFile:
 
 
 func load_fonts(fonts: Dictionary, fonts_path: String) -> void:
+	print("Loading fonts")
 	for font_id in fonts:
 		add_font(font_id, fonts_path + fonts[font_id])
 
@@ -88,19 +89,5 @@ func load_base_fonts(data: Dictionary = {}) -> void:
 		push_warning("Base pack 'assets-path' is empty. Its recommended to add one for the base pack than typing every full path")
 	var fonts_path: String = assets_path + data.get("fonts-path", "")
 	
-	var fonts: Dictionary = data.get("fonts", {})
-	load_fonts(fonts, fonts_path)
-
-
-func load_font_pack(id: StringName, data: Dictionary = {}) -> void:
-	if data.is_empty():
-		data = NovaResourcePack.get_pack_data(id)
-	
-	if data.is_empty():
-		push_warning("Pack %s data.json is empty")
-		return
-	print("Loading font pack: %s" % id)
-	var base_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % id
-	var fonts_path: String = base_path + data.get("assets-path", "") + data.get("fonts-path", "")
 	var fonts: Dictionary = data.get("fonts", {})
 	load_fonts(fonts, fonts_path)

@@ -21,6 +21,7 @@ func load_base_translations(data: Dictionary = {}) -> void:
 
 
 func load_locales(translations: Dictionary, langs_path: String) -> void:
+	print("Loading translations")
 	for locale: String in translations:
 		var translation = translations[locale]
 		if typeof(translation) == TYPE_STRING:
@@ -68,18 +69,3 @@ func _get_translation_from_file(path: String) -> Dictionary:
 		return {}
 	
 	return data
-
-
-func load_translation_pack(id: String, data: Dictionary = {}) -> void:
-	if data.is_empty():
-		data = NovaResourcePack.get_pack_data(id)
-	
-	if data.is_empty():
-		push_warning("Pack %s data.json is empty")
-		return
-	
-	print("Loading translation pack: %s" % id)
-	var base_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % id
-	var langs_path: String = base_path + data.get("assets-path", "") + data.get("langs-path", "")
-	var translations: Dictionary = data.get("langs")
-	load_locales(translations, langs_path)

@@ -121,6 +121,7 @@ func get_animation_texture_size(id: StringName) -> Vector2:
 
 
 func load_animations_data(animations_data: Dictionary) -> void:
+	print("Loading animations")
 	for animation_id: StringName in animations_data.keys():
 		add_animation(animation_id, animations_data[animation_id])
 
@@ -135,18 +136,5 @@ func load_base_animations(data: Dictionary = {}) -> void:
 		push_warning("Base pack data is empty!")
 		return
 	
-	var animations_data: Dictionary = data.get("animations", {})
-	print("Loading animation pack: %s" % NovaResourcePack.BASE_PACK_ID)
-	load_animations_data(animations_data)
-
-
-func load_animation_pack(id: StringName, data: Dictionary = {}) -> void:
-	if data.is_empty():
-		data = NovaResourcePack.get_pack_data(id)
-	
-	if data.is_empty():
-		push_warning("Pack %s data.json is empty")
-		return
-	print("Loading animation pack: %s" % id)
 	var animations_data: Dictionary = data.get("animations", {})
 	load_animations_data(animations_data)

@@ -126,35 +126,14 @@ func load_base_audio(data: Dictionary = {}) -> void:
 
 
 func load_sfx(sfxs: Dictionary, audio_path: String) -> void:
+	print("Loading sfx")
 	for sfx_id in sfxs.keys():
 		var sfx_path: String = audio_path + sfxs[sfx_id]
 		add_sfx(sfx_id, sfx_path)
 
 
 func load_music(musics: Dictionary, audio_path: String) -> void:
+	print("Loading music")
 	for music_id in musics.keys():
 		var music_path: String = audio_path + musics[music_id]
 		add_music(music_id, music_path)
-
-
-func load_audio_pack(id: String, data: Dictionary = {}) -> void:
-	if data.is_empty():
-		data = NovaResourcePack.get_pack_data(id)
-	
-	if data.is_empty():
-		push_warning("Pack %s data.json is empty")
-		return
-	
-	var base_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % id
-	var sfx_path: String = base_path + data.get("assets-path", "") + data.get("sfx-path", "")
-	var music_path: String = base_path + data.get("assets-path", "") + data.get("music-path", "")
-	
-	var audio: Dictionary = data.get("audio")
-	var sfxs: Dictionary = audio.get("sfx")
-	var musics: Dictionary = audio.get("music")
-	
-	print("Loading audio pack: %s" % id)
-	print("Loading sfx: %s" % id)
-	load_sfx(sfxs, sfx_path)
-	print("Loading music: %s" % id)
-	load_music(musics, music_path)
