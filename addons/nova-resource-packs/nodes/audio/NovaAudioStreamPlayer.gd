@@ -1,8 +1,12 @@
 extends AudioStreamPlayer
 
 enum AudioTypes { SFX, MUSIC }
+
+## if its stored in [code]"sfx"[/code] or [code]"music"[/code] in your [code]"audio"[/code] part of your data.json
 @export var AudioType: AudioTypes
+## Audio id from [code]"audio"[/code] [code]"sfx/music"[/code] part of your data.json with your assets with the second one depending on AudioType
 @export var AudioId: StringName
+## If the audio should loop
 @export var Loop: bool = false
 
 

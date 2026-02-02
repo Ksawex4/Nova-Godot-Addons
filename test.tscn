@@ -116,8 +116,7 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("7_vbegm")
 AnimationId = &"fency"
 Autoplay = true
-BaseTextureSizeId = &"fency"
-IsBaseTextureSheet = true
+BaseFrameSize = Vector2(32, 32)
 metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
 [node name="NovaAnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1010865576]
@@ -127,7 +126,7 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("7_vbegm")
 AnimationId = &"pan-loduwka"
 Autoplay = true
-BaseTextureSizeId = &"pan-loduwka.idle.1"
+BaseFrameSize = Vector2(32, 48)
 metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
 [node name="NovaAnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=465135516]
@@ -138,7 +137,7 @@ script = ExtResource("7_vbegm")
 AnimationId = &"pan-loduwka"
 AnimationName = &"left"
 Autoplay = true
-BaseTextureSizeId = &"pan-loduwka.idle.1"
+BaseFrameSize = Vector2(32, 48)
 metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
 [node name="NovaAnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=1996723553]
@@ -149,7 +148,7 @@ script = ExtResource("7_vbegm")
 AnimationId = &"pan-loduwka"
 AnimationName = &"right"
 Autoplay = true
-BaseTextureSizeId = &"pan-loduwka.idle.1"
+BaseFrameSize = Vector2(32, 48)
 metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
 [node name="Label2" type="Label" parent="." unique_id=1453944711]

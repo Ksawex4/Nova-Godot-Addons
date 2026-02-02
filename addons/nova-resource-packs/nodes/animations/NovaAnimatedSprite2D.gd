@@ -14,7 +14,7 @@ extends AnimatedSprite2D
 ## base size of a single frame in your animation, all frames will be scaled to this size
 @export var BaseFrameSize: Vector2 = Vector2(64, 64)
 ## use this instead of scale when editing the scale in-game, beacuse if you use [code]scale[/code] it will get overwritten
-@export var NovaScale: Vector2 = Vector2(0.0, 0.0)
+@export var NovaScale: Vector2 = Vector2(1.0, 1.0)
 
 ## use _nova_ready() unless you want to edit how the animation is loaded
 func _ready() -> void:

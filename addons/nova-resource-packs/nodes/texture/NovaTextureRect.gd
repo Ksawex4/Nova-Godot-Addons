@@ -1,10 +1,10 @@
 extends TextureRect
 
+## Texture id from [code]"textures"[/code] part of your data.json with your assets
 @export var TextureId: StringName = &"missing"
 
 func _ready() -> void:
 	texture = NovaTexture.get_texture(TextureId)
-	#scale = NovaTexture.get_scale(TextureId, NovaTexture.get_texture_size(TextureId), scale)
 	NovaTexture.ReloadTexture.connect(_reload_texture)
 	await _nova_ready()
 
@@ -14,5 +14,4 @@ func _nova_ready() -> void:
 
 
 func _reload_texture() -> void:
-	#scale = NovaTexture.get_scale(TextureId, texture.get_size(), scale)
 	texture = NovaTexture.get_texture(TextureId)

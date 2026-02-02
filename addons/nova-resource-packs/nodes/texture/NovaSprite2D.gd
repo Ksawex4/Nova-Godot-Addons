@@ -1,5 +1,6 @@
 extends Sprite2D
 
+## Texture id from [code]"textures"[/code] part of your data.json with your assets
 @export var TextureId: StringName = &"missing"
 
 func _ready() -> void:
