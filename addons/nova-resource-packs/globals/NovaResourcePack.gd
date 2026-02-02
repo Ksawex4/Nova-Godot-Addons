@@ -118,6 +118,7 @@ func load_active_resource_packs() -> void:
 	NovaAudio.load_sfx(assets[&"audio"][&"sfx"], "")
 	NovaAudio.load_music(assets[&"audio"][&"music"], "")
 	NovaFont.load_fonts(assets[&"fonts"], "")
+	
 	print("======== Reloading resources %s ========" % ActiveResourcePacks)
 	NovaTexture.ReloadTexture.emit()
 	NovaAnimation.ReloadAnimation.emit()
