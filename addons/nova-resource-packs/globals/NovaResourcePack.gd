@@ -10,9 +10,6 @@ const RESOURCE_PACK_DATA_PATH = RESOURCE_PACKS_PATH + "/%s/data.json"
 func _ready() -> void:
 	load_base_assets()
 	load_resource_pack_ids()
-	activate_resource_pack("test-pack")
-	activate_resource_pack("emix-pack")
-	load_active_resource_packs()
 
 
 func load_base_assets() -> void:
