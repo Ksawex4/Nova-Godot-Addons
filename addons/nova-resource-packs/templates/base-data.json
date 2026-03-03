@@ -8,6 +8,7 @@
   "meta": {
 	 "name": "base-pack-template",
 	 "description": "Base Resource Pack template, all paths except assets-path is assets-path + x-path",
+	 "icon": "res://addons/nova-resource-packs/missing.png",
 	 "authors": [
       "NovaProot"
 	 ]

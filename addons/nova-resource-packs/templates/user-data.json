@@ -8,6 +8,7 @@
   "meta": {
     "name": "user-pack-template",
     "description": "User Resource Pack template, all paths except assets-path is assets-path + x-path",
+    "icon": "icon.png path from the directory of where this data.json is located",
     "authors": [
       "NovaProot"
     ]

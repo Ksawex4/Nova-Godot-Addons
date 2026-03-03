@@ -166,3 +166,6 @@ text = "
 
 jdasldlask"
 fit_content = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1345928886]
+position = Vector2(576, 323)

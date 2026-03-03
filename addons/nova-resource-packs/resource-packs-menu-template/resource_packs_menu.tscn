@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b8i3plisy8crb"]
+
+[ext_resource type="Script" uid="uid://csldweb4dyshb" path="res://addons/nova-resource-packs/resource-packs-menu-template/resource-packs-menu.gd" id="1_ilwey"]
+[ext_resource type="Script" uid="uid://cerxywjg4u645" path="res://addons/nova-resource-packs/resource-packs-menu-template/resource-packs-menu-global.gd" id="1_pqawx"]
+[ext_resource type="Texture2D" uid="uid://co16o7o56ej74" path="res://addons/nova-resource-packs/resource-packs-menu-template/Close.png" id="1_ybfiq"]
+[ext_resource type="Script" uid="uid://bpuwfn2w7137s" path="res://addons/nova-resource-packs/fontnode-script-templates/button_custom_font.gd" id="3_ilwey"]
+
+[node name="ResourcePacksMenuGlobal" type="CanvasLayer" unique_id=1447387507 node_paths=PackedStringArray("MenuPanel")]
+layer = 2
+follow_viewport_enabled = true
+script = ExtResource("1_pqawx")
+MenuPanel = NodePath("ResourcePacksMenu")
+
+[node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut")]
+visible = false
+custom_minimum_size = Vector2(585, 327)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -163.5
+offset_right = 298.0
+offset_bottom = 163.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ilwey")
+TranslationsBut = NodePath("VSplitContainer/Container/OptionButton")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="ResourcePacksMenu" unique_id=1582999145]
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Container" type="Control" parent="ResourcePacksMenu/VSplitContainer" unique_id=1598253953]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Close" type="Button" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=1483233924]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 572.0
+offset_right = 596.0
+offset_bottom = 24.0
+icon = ExtResource("1_ybfiq")
+flat = true
+
+[node name="Rescan" type="Button" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=1368338917]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 12
+text = "Rescan"
+script = ExtResource("3_ilwey")
+
+[node name="OptionButton" type="OptionButton" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=535052347]
+layout_mode = 0
+offset_left = 208.0
+offset_right = 240.0
+offset_bottom = 20.0
+selected = 0
+item_count = 1
+popup/item_0/text = "en"
+popup/item_0/id = 0
+script = ExtResource("3_ilwey")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ResourcePacksMenu/VSplitContainer" unique_id=1954231358]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="DisabledResourcePacks" type="ScrollContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer" unique_id=626084510]
+custom_minimum_size = Vector2(292.5, 163)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer/DisabledResourcePacks" unique_id=1174488881]
+custom_minimum_size = Vector2(292.5, 163)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ActiveResourcePacks" type="ScrollContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer" unique_id=433498157]
+custom_minimum_size = Vector2(292.5, 163)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer/ActiveResourcePacks" unique_id=370480920]
+custom_minimum_size = Vector2(292.5, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Close" to="ResourcePacksMenu" method="_on_close_pressed"]
+[connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Rescan" to="ResourcePacksMenu" method="rescan"]
+[connection signal="item_selected" from="ResourcePacksMenu/VSplitContainer/Container/OptionButton" to="ResourcePacksMenu" method="_on_option_button_item_selected"]
